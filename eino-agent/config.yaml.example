@@ -1,0 +1,16 @@
+# DeepSeek API配置
+DeekSeek:
+  # DeepSeek API密钥
+  api_key: "your-api-key-here"
+
+  # 使用的模型ID
+  model_id: "deepseek-chat"
+
+  # API基础URL（可选）
+  base_url: "https://api.deepseek.com/v1"
+
+# 可以添加更多配置项
+# 例如：
+# server:
+#   port: 8080
+#   timeout: 30s 

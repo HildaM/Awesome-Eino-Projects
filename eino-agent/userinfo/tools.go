@@ -2,7 +2,9 @@ package userinfo
 
 import (
 	"context"
+	"fmt"
 	"log"
+	"strings"
 
 	"github.com/cloudwego/eino/components/tool"
 	"github.com/cloudwego/eino/components/tool/utils"
@@ -12,12 +14,14 @@ import (
 func UserInfoTools(ctx context.Context) ([]tool.BaseTool, []*schema.ToolInfo) {
 	addTool, _ := utils.InferTool("add_employee", "添加用户信息，包括 username, age, department 字段", AddFunc)
 	findTool, _ := utils.InferTool("find_employee", "查看用户信息", FindFunc)
+	listAllTool, _ := utils.InferTool("list_all_employees", "列出所有的员工信息", ListAllFunc)
 	updateTool, _ := utils.InferTool("update_employee", "更新用户信息，包括 age, department", UpdateFunc)
 	deleteTool, _ := utils.InferTool("delete_employee", "删除用户信息", DeleteFunc)
 
 	tools := []tool.BaseTool{
 		addTool,
 		findTool,
+		listAllTool,
 		updateTool,
 		deleteTool,
 	}
@@ -42,10 +46,10 @@ type UserInfo struct {
 
 var (
 	userDb = map[string]UserInfo{
-		"songjiayang": {
-			Username:   "songjiayang",
-			Age:        34,
-			Department: "软件研发",
+		"HildaM": {
+			Username:   "HildaM",
+			Age:        20,
+			Department: "IT",
 		},
 	}
 )
@@ -58,6 +62,24 @@ func FindFunc(_ context.Context, params *UserInfo) (resp string, err error) {
 		log.Printf("%s not found", params.Username)
 	}
 	return
+}
+
+func ListAllFunc(_ context.Context, params *UserInfo) (resp string, err error) {
+	if len(userDb) == 0 {
+		log.Println("当前没有任何员工信息")
+		return "当前没有任何员工信息", nil
+	}
+
+	var result strings.Builder
+	result.WriteString("员工列表：\n")
+
+	for _, user := range userDb {
+		userInfo := fmt.Sprintf("姓名: %s, 年龄: %d, 部门: %s\n",
+			user.Username, user.Age, user.Department)
+		result.WriteString(userInfo)
+		log.Print(userInfo)
+	}
+	return result.String(), nil
 }
 
 func AddFunc(_ context.Context, params *UserInfo) (resp string, err error) {

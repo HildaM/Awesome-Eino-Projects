@@ -61,7 +61,7 @@ func NewAgent(ctx context.Context) *Agent {
 		return nil
 	}
 
-	todoToolsNode, err := compose.NewToolNode(context.Background(), &compose.ToolsNodeConfig{
+	todoToolsNode, err := compose.NewToolNode(ctx, &compose.ToolsNodeConfig{
 		Tools: tools,
 	})
 	if err != nil {

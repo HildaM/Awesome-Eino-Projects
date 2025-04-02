@@ -11,12 +11,14 @@ A MCP (Message Control Protocol) example project built on Eino framework.
 - 配置管理
 - 工具集成
 - 协议扩展示例
+- RAG (Retrieval Augmented Generation) 功能集成
 
 This project demonstrates how to implement MCP protocol using Eino framework, including:
 - MCP agent implementation
 - Configuration management
 - Tool integration
 - Protocol extension examples
+- RAG (Retrieval Augmented Generation) integration
 
 ## 项目结构 | Project Structure
 
@@ -25,6 +27,7 @@ eino-mcp/
 ├── agent/          # MCP agent implementation
 ├── conf/           # Configuration management
 ├── tools/          # Tool implementations
+├── rag/            # RAG functionality (integrated from github.com/HildaM/eino-rag)
 ├── main.go         # Entry point
 ├── config.yaml     # Configuration file
 └── go.mod          # Go module definition
@@ -51,6 +54,11 @@ go mod tidy
      host: "localhost"
      port: 8080
      # 其他配置项...
+   
+   rag:
+     # RAG相关配置
+     embedding_model: "text-embedding-ada-002"
+     vector_store: "local"
    ```
 
 ### 运行项目 | Run Project
@@ -65,6 +73,12 @@ go run main.go
 - 配置热加载
 - 工具集成支持
 - 代理服务
+- RAG 知识库检索增强生成
+
+## 外部依赖 | External Dependencies
+
+本项目集成了以下外部仓库：
+- [HildaM/eino-rag](https://github.com/HildaM/eino-rag) - Eino框架的RAG实现
 
 ## 开发计划 | Development Plan
 
@@ -72,6 +86,7 @@ go run main.go
 - [ ] 添加更多工具支持
 - [ ] 优化配置管理
 - [ ] 添加单元测试
+- [ ] 完善RAG功能集成
 
 ## 贡献指南 | Contributing
 

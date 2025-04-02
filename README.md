@@ -7,3 +7,4 @@
 
 1. eino-agent: 用 eino 框架开发的 agent 项目
 2. eino-mcp: 用 eino 开发的 mcp client 和 server 项目
+3. eino-rag: 用 eino 开发的，基于 redis 的 rag 项目

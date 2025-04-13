@@ -1,4 +1,4 @@
-# Eino-Examples
+# Awesome-Eino-Projects
 
 这是一个用于存放我学习 [Eino 框架](https://github.com/cloudwego/eino) 的仓库。
 
@@ -7,4 +7,5 @@
 
 1. eino-agent: 用 eino 框架开发的 agent 项目
 2. eino-mcp: 用 eino 开发的 mcp client 和 server 项目
-3. eino-rag: 用 eino 开发的，基于 redis 的 rag 项目
+3. [eino-rag](https://github.com/HildaM/eino-rag): 基于 Eino 构建的 RAG (检索增强生成) 应用系统。
+4. [commander-agent](https://github.com/HildaM/commander-agent)：AI 命令行助手
